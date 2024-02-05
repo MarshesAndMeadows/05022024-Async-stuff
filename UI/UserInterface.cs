@@ -3,6 +3,7 @@ using MDL;
 
 namespace UI
 {
+
     public partial class UserInterface : Form
     {
         BusinessLogic bl = new BusinessLogic();
@@ -15,7 +16,7 @@ namespace UI
 
         public void DeleteTest_Click(object sender, EventArgs e)
         {
-            Task t1 = Task.Factory.StartNew(() =>bl.);
+            Task t1 = Task.Factory.StartNew(() => bl.RemoveFromList();
         }
 
         public void GetTest_Click(object sender, EventArgs e)
@@ -29,6 +30,21 @@ namespace UI
         }
 
         public void AddTest_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NameBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AgeBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IDBox_TextChanged(object sender, EventArgs e)
         {
 
         }
