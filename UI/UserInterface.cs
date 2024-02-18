@@ -36,26 +36,22 @@ namespace UI
 
         }
 
-        private void GetBtn_Click(object sender, EventArgs e)
+        private async void GetBtn_Click(object sender, EventArgs e)
         {
             if (idIsValid == true)
             {
-                Task<Person> t2 = Task<Person>.Factory.StartNew(() => bl.GetModel(Int32.Parse(IDBox.Text)));
-                t2.Wait();
-                Person person = t2.Result;
+                Person person = await Task<Person>.Factory.StartNew(() => bl.GetModel(Int32.Parse(IDBox.Text)));
                 IDBox.Text = person.Id.ToString();
                 NameBox.Text = person.Name.ToString();
                 AgeBox.Text = person.Age.ToString();
             }
         }
-        private void UpdateBtn_Click(object sender, EventArgs e)
+        private async void UpdateBtn_Click(object sender, EventArgs e)
         {
             if (nameIsValid == true && ageIsValid == true && idIsValid == true)
             {
-                Task t3 = Task.Factory.StartNew(() => bl.Update(Int32.Parse(IDBox.Text), NameBox.Text, Int32.Parse(AgeBox.Text)));
-                Task<Person> t2 = Task<Person>.Factory.StartNew(() => bl.GetModel(Int32.Parse(IDBox.Text)));
-                Task.WaitAll(t2, t3);
-                Person person = t2.Result;
+                await Task.Factory.StartNew(() => bl.Update(Int32.Parse(IDBox.Text), NameBox.Text, Int32.Parse(AgeBox.Text)));
+                Person person = await Task<Person>.Factory.StartNew(() => bl.GetModel(Int32.Parse(IDBox.Text)));
                 IDBox.Text = person.Id.ToString();
                 NameBox.Text = person.Name.ToString();
                 AgeBox.Text = person.Age.ToString();
@@ -65,24 +61,22 @@ namespace UI
             }
         }
 
-        private void AddBtn_Click(object sender, EventArgs e)
+        private async void AddBtn_Click(object sender, EventArgs e)
         {
             if (nameIsValid == true && ageIsValid == true && idIsValid == true)
             {
-                Task t4 = Task.Factory.StartNew(() => bl.AddToList(NameBox.Text, Int32.Parse(AgeBox.Text)));
-                t4.Wait();
+                await Task.Factory.StartNew(() => bl.AddToList(NameBox.Text, Int32.Parse(AgeBox.Text)));
                 IDBox.Text = null;
                 NameBox.Text = null;
                 AgeBox.Text = null;
             }
         }
 
-        private void DeleteBtn_Click(object sender, EventArgs e)
+        private async void DeleteBtn_Click(object sender, EventArgs e)
         {
             if (idIsValid == true)
             {
-                Task t1 = Task.Factory.StartNew(() => bl.RemoveFromList(Int32.Parse(IDBox.Text)));
-                t1.Wait();
+                await Task.Factory.StartNew(() => bl.RemoveFromList(Int32.Parse(IDBox.Text)));
                 IDBox.Text = null;
                 NameBox.Text = null;
                 AgeBox.Text = null;

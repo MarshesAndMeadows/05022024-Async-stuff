@@ -7,26 +7,31 @@ namespace DA
         private List<Person> list = new List<Person>();
         public DataAccess()
         {
+            Thread.Sleep(5000);
             list = new List<Person>();
             SeedData();
         }
         public void RemoveFromList(int idToRemove)
         {
+            Thread.Sleep(5000);
             Person target = list.Find(o => o.Id == idToRemove);
             list.Remove(target);
         }
         public void AddToList(Person guyToAdd)
         {
+            Thread.Sleep(5000);
             guyToAdd.Id = list.Max(o => o.Id + 1);
             list.Add(guyToAdd);
         }
         public Person Get(int id)
         {
+            Thread.Sleep(5000);
             Person guyToGet = list.Find(o => o.Id == id);
             return guyToGet;
         }
         public Person Update(int targetID, string newName, int newAge)
         {
+            Thread.Sleep(5000);
             Person target = list.Find(o => o.Id == targetID);
             target.Name = newName;
             target.Age = newAge;
