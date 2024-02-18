@@ -2,7 +2,7 @@
 
 namespace MethodClass
 {
-    public class Method
+    public class Methods
     {
         public void TimerMethod(int id, int sleeptime, int iterations)
         {
@@ -13,7 +13,7 @@ namespace MethodClass
             }
         }
 
-        public int SumTimerMethod(int id, int num1)
+        public int SumTimerMethod(int num1)
         {
             Thread.Sleep (2000);
 

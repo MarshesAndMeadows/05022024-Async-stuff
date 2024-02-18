@@ -87,6 +87,7 @@
             IDBox.Name = "IDBox";
             IDBox.Size = new Size(46, 27);
             IDBox.TabIndex = 4;
+            IDBox.TextChanged += IDBox_TextChanged_1;
             // 
             // NameBox
             // 
@@ -94,6 +95,7 @@
             NameBox.Name = "NameBox";
             NameBox.Size = new Size(101, 27);
             NameBox.TabIndex = 5;
+            NameBox.TextChanged += NameBox_TextChanged_1;
             // 
             // AgeBox
             // 
@@ -101,6 +103,7 @@
             AgeBox.Name = "AgeBox";
             AgeBox.Size = new Size(45, 27);
             AgeBox.TabIndex = 6;
+            AgeBox.TextChanged += AgeBox_TextChanged_1;
             // 
             // GetBtn
             // 
@@ -110,6 +113,7 @@
             GetBtn.TabIndex = 7;
             GetBtn.Text = "Get";
             GetBtn.UseVisualStyleBackColor = true;
+            GetBtn.Click += GetBtn_Click;
             // 
             // UpdateBtn
             // 
@@ -119,6 +123,7 @@
             UpdateBtn.TabIndex = 8;
             UpdateBtn.Text = "Update";
             UpdateBtn.UseVisualStyleBackColor = true;
+            UpdateBtn.Click += UpdateBtn_Click;
             // 
             // AddBtn
             // 
@@ -128,6 +133,7 @@
             AddBtn.TabIndex = 9;
             AddBtn.Text = "Add";
             AddBtn.UseVisualStyleBackColor = true;
+            AddBtn.Click += AddBtn_Click;
             // 
             // DeleteBtn
             // 
@@ -137,6 +143,7 @@
             DeleteBtn.TabIndex = 10;
             DeleteBtn.Text = "Delete";
             DeleteBtn.UseVisualStyleBackColor = true;
+            DeleteBtn.Click += DeleteBtn_Click;
             // 
             // UserInterface
             // 
@@ -154,7 +161,6 @@
             Controls.Add(Name);
             Controls.Add(IDLabel);
             Controls.Add(pictureBox1);
-            Name = "UserInterface";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

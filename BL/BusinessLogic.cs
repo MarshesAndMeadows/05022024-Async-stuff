@@ -5,26 +5,78 @@ namespace BL
     public class BusinessLogic
     {
         DataAccess da = new DataAccess();
-        public void AddToList(string name, int age, List<Model> targetList)
+
+/*
+         public bool Create(string newName, string newDesc, double newStockprice, double newProfit)
         {
-            int id = targetList.Max(o => o.Id) + 1;
-            Model newGuy = new Model(id, name, age);
-            da.AddToList(newGuy, targetList);
+            Fruit fruit = new Fruit(newName, newDesc, newStockprice, newProfit);
+
+            if (ValidateModel(fruit))
+            {
+                return db.Create(fruit);
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool Create(int newId, string newName, string newDesc, double newStockprice, double newProfit)
+        {
+            Fruit fruit = new Fruit(newId, newName, newDesc, newStockprice, newProfit);
+
+            if (ValidateModel(fruit))
+            {
+                return db.Create(fruit);
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public void RemoveFromList(int id,  List<Model> targetList)
+        public List<Fruit> Get()
         {
-            da.RemoveFromList(id, targetList);
+            return db.Get();
+        }
+        public Fruit Get(int fruitToGet)
+        {
+            return db.Get(fruitToGet);
         }
 
-        public Model GetModel(int id, List<Model>targetList)
+        public bool Delete(int fruitToDelete)
         {
-            return da.Get(id, targetList);
+            return db.Delete(fruitToDelete);
         }
 
-        public void Update(int targetID, string newName, int newAge, List<Model> targetList)
+        public bool Update(int fruitToUpdate, string newName, string newDesc, double newStockprice, double newProfit)
         {
-            da.Update(targetID, newName, newAge, targetList);
+            return db.Update(fruitToUpdate, newName, newDesc, newStockprice, newProfit);
+        }
+*/
+
+
+
+
+        public void AddToList(string name, int age)
+        {
+            
+            Person newGuy = new Person(0,name, age);
+            da.AddToList(newGuy);
+        }
+
+        public void RemoveFromList(int id)
+        {
+            da.RemoveFromList(id);
+        }
+
+        public Person GetModel(int id)
+        {
+            return da.Get(id);
+        }
+
+        public void Update(int targetID, string newName, int newAge)
+        {
+            da.Update(targetID, newName, newAge);
         }
     }
 }

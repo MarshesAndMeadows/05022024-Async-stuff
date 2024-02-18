@@ -4,48 +4,46 @@ namespace DA
 {
     public class DataAccess
     {
-        public DataAccess() 
+        private List<Person> list = new List<Person>();
+        public DataAccess()
         {
-            List<Model> list = new List<Model>();
-            SeedData(list);
+            list = new List<Person>();
+            SeedData();
         }
-        List<Model> SeedData(List<Model> list)
+        public void RemoveFromList(int idToRemove)
         {
-            list.Add(new Model(1,"arl", 18));
-            list.Add(new Model(2, "barl", 18));
-            list.Add(new Model(3, "carl", 18));
-            list.Add(new Model(4, "darl", 18));
-            list.Add(new Model(5, "earl", 18));
-            list.Add(new Model(6, "farl", 18));
-            list.Add(new Model(7, "garl", 18));
-            list.Add(new Model(8, "harl", 18));
-            list.Add(new Model(9, "iarl", 18));
-            list.Add(new Model(10, "jarl", 18));
-            return list;
+            Person target = list.Find(o => o.Id == idToRemove);
+            list.Remove(target);
         }
-
-        public void RemoveFromList(int idToRemove, List<Model> targetList)
+        public void AddToList(Person guyToAdd)
         {
-            Model target = targetList.Find(o=>o.Id == idToRemove);
-            targetList.Remove(target);
+            guyToAdd.Id = list.Max(o => o.Id + 1);
+            list.Add(guyToAdd);
         }
-        public void AddToList(Model guyToAdd, List<Model> targetList)
+        public Person Get(int id)
         {
-            targetList.Add(guyToAdd);
-        }
-
-        public Model Get(int id, List<Model> targetList)
-        {
-            Model guyToGet = targetList.Find(o=> o.Id == id);
+            Person guyToGet = list.Find(o => o.Id == id);
             return guyToGet;
         }
-
-        public Model Update (int targetID, string newName, int newAge, List<Model> targetList)
+        public Person Update(int targetID, string newName, int newAge)
         {
-            Model target = targetList.Find(o => o.Id == targetID);
+            Person target = list.Find(o => o.Id == targetID);
             target.Name = newName;
             target.Age = newAge;
             return target;
+        }
+        void SeedData()
+        {
+            list.Add(new Person(1, "aarl", 18));
+            list.Add(new Person(2, "barl", 18));
+            list.Add(new Person(3, "carl", 18));
+            list.Add(new Person(4, "darl", 18));
+            list.Add(new Person(5, "earl", 18));
+            list.Add(new Person(6, "farl", 18));
+            list.Add(new Person(7, "garl", 18));
+            list.Add(new Person(8, "harl", 18));
+            list.Add(new Person(9, "iarl", 18));
+            list.Add(new Person(10, "jarl", 18));
         }
     }
 }
