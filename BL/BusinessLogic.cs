@@ -6,26 +6,26 @@ namespace BL
     {
         DataAccess da = new DataAccess();
 
-        public void AddToList(string name, int age)
+        public async void AddToList(string name, int age)
         {
             
             Person newGuy = new Person(0,name, age);
-            da.AddToList(newGuy);
+            da.AddToListAsync(newGuy);
         }
 
         public void RemoveFromList(int id)
         {
-            da.RemoveFromList(id);
+            da.RemoveFromListAsync(id);
         }
 
-        public Person GetModel(int id)
+        public async Task<Person> GetModel(int id)
         {
-            return da.Get(id);
+                return await da.GetAsync(id);
         }
 
-        public void Update(int targetID, string newName, int newAge)
+        public async Task<Person> Update(int targetID, string newName, int newAge)
         {
-            da.Update(targetID, newName, newAge);
+            return await da.UpdateAsync(targetID, newName, newAge);
         }
     }
 }

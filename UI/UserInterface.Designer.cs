@@ -111,7 +111,7 @@
             GetBtn.Name = "GetBtn";
             GetBtn.Size = new Size(126, 49);
             GetBtn.TabIndex = 7;
-            GetBtn.Text = "Get";
+            GetBtn.Text = "GetAsync";
             GetBtn.UseVisualStyleBackColor = true;
             GetBtn.Click += GetBtn_Click;
             // 
@@ -121,7 +121,7 @@
             UpdateBtn.Name = "UpdateBtn";
             UpdateBtn.Size = new Size(122, 50);
             UpdateBtn.TabIndex = 8;
-            UpdateBtn.Text = "Update";
+            UpdateBtn.Text = "UpdateAsync";
             UpdateBtn.UseVisualStyleBackColor = true;
             UpdateBtn.Click += UpdateBtn_Click;
             // 

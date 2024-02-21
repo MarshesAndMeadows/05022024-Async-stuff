@@ -35,12 +35,11 @@ namespace UI
         {
 
         }
-
         private async void GetBtn_Click(object sender, EventArgs e)
         {
             if (idIsValid == true)
             {
-                Person person = await Task<Person>.Factory.StartNew(() => bl.GetModel(Int32.Parse(IDBox.Text)));
+                Person person = await bl.GetModel(Int32.Parse(IDBox.Text));
                 IDBox.Text = person.Id.ToString();
                 NameBox.Text = person.Name.ToString();
                 AgeBox.Text = person.Age.ToString();
@@ -51,7 +50,7 @@ namespace UI
             if (nameIsValid == true && ageIsValid == true && idIsValid == true)
             {
                 await Task.Factory.StartNew(() => bl.Update(Int32.Parse(IDBox.Text), NameBox.Text, Int32.Parse(AgeBox.Text)));
-                Person person = await Task<Person>.Factory.StartNew(() => bl.GetModel(Int32.Parse(IDBox.Text)));
+                Person person = await bl.GetModel(Int32.Parse(IDBox.Text));
                 IDBox.Text = person.Id.ToString();
                 NameBox.Text = person.Name.ToString();
                 AgeBox.Text = person.Age.ToString();

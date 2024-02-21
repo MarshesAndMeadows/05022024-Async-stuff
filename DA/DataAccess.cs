@@ -1,4 +1,5 @@
 ﻿using MDL;
+using System.Reflection.Metadata.Ecma335;
 
 namespace DA
 {
@@ -11,27 +12,46 @@ namespace DA
             list = new List<Person>();
             SeedData();
         }
-        public void RemoveFromList(int idToRemove)
+
+
+        public async void RemoveFromListAsync(int idToRemove)
         {
             Thread.Sleep(5000);
-            Person target = list.Find(o => o.Id == idToRemove);
+            await Task.Factory.StartNew(() => RemoveMethod(idToRemove));
+        }
+        public async void AddToListAsync(Person guyToAdd)
+        {
+            Thread.Sleep(5000);
+            await Task.Factory.StartNew(() => AddMethod(guyToAdd));
+        }
+        public async Task<Person> GetAsync(int id)
+        {
+            Thread.Sleep(5000);
+            return await Task<Person>.Factory.StartNew(() => GetMethod(id));
+        }
+        public async Task<Person> UpdateAsync(int targetID, string newName, int newAge)
+        {
+            Thread.Sleep(5000);
+            return await Task<Person>.Factory.StartNew(() => UpdateMethod(targetID,newName,newAge));
+        }
+
+        private void RemoveMethod(int id)
+        {
+            Person target = list.Find(o => o.Id == id);
             list.Remove(target);
         }
-        public void AddToList(Person guyToAdd)
+        private void AddMethod(Person person)
         {
-            Thread.Sleep(5000);
-            guyToAdd.Id = list.Max(o => o.Id + 1);
-            list.Add(guyToAdd);
+            person.Id = list.Max(o => o.Id + 1);
+            list.Add(person);
         }
-        public Person Get(int id)
+        private Person GetMethod(int id)
         {
-            Thread.Sleep(5000);
             Person guyToGet = list.Find(o => o.Id == id);
             return guyToGet;
         }
-        public Person Update(int targetID, string newName, int newAge)
+        private Person UpdateMethod(int targetID, string newName, int newAge)
         {
-            Thread.Sleep(5000);
             Person target = list.Find(o => o.Id == targetID);
             target.Name = newName;
             target.Age = newAge;
